@@ -38,9 +38,12 @@ Then, heap is checked for all adjacent free fragments to merge (in the merge_fre
 
 ### Example shown in the code
 Heap: 1 KB (1000 bytes)
+
 So available memory: 968B, as sizeof(mi) = 32 here is always present for initial MI
+
 When allocating new memory, sizeof(mi) + alloc_size is used up; 
 while the same size is freed up when requested so.
+
 As of now, the code doesn't take user input, but a full illustration is present in the main driver code. The 'free' and 'size' variables for each fragment are printed after each step (by the print_heap_info function).
 
 
