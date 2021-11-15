@@ -25,19 +25,20 @@ We use pointer arithmetic and typecasting to switch between the actual memory po
 
 ## Allocation (malloc)
 
-First-fit allocation strategy allocates the requested memory into the first free memory fragment that fits the needed size ('alloc_size' in the code).
-If the free fragment is larger than needed, it is broken into the requested fragment and the remaining as the reduced free fragment. Remember that this also incurs the 
+First-fit allocation strategy allocates the requested memory into the first free memory fragment that fits the needed size ('alloc_size' in the code) (done by the mem_alloc function, which is the emulated malloc function).
+If the free fragment is larger than needed, it is broken into the requested fragment and the remaining as the reduced free fragment (done by the frag function). Remember that this also incurs the 
 memory cost for each fragment created.
 
 ## Freeing (free)
 
-The fragment is set free (indicated by the 'free' variable in the code).
-Then, heap is checked for all adjacent free fragments to merge, where we are refunded the cost of the struct size for each fragment merged.
+The fragment is set free (done by the free_mem function, akin to the C free function).
+Then, heap is checked for all adjacent free fragments to merge (in the merge_free_mem function), where we are refunded the cost of the struct size for each fragment merged.
 
-### Example from the code
+### Example shown in the code
 Heap: 1 KB (1000 bytes)
 So available memory: 968B, as sizeof(mi) = 32 here is always present for initial MI
 When allocating new memory, sizeof(mi) + alloc_size is used up; 
 while the same size is freed up when requested so.
+As of now, the code doesn't take user input, but a full illustration is present in the main driver code. The 'free' and 'size' variables for each fragment are printed after each step (by the print_heap_info function).
 
 
