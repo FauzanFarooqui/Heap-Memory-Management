@@ -25,6 +25,8 @@ the heap, even prior to allocating any memory.
 
 We use pointer arithmetic and typecasting to switch between the actual memory pointer and list node (mi).
 
+Additionally, the main() code also checks whether the heap is freed completely or not, before the program exits.
+
 ## Allocation (malloc)
 
 First-fit allocation strategy allocates the requested memory into the first free memory fragment that fits the needed size ('alloc_size' in the code) (done by the mem_alloc function, which is the emulated malloc function).
