@@ -10,7 +10,9 @@ The corresponding function signatures in C are:
 * void free (void* ptr)
 
 void*: a generic pointer to any data type (it's represented in memory as a char pointer)
+
 size_t: memory size in bytes
+
 ptr: was allocated by malloc
 
 # Implementation
